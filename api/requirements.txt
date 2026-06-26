@@ -5,5 +5,5 @@ pillow
 numpy
 torch
 torchvision
-google-generativeai
+torchxrayvision
 pydantic
