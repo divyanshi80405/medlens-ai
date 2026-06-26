@@ -11,17 +11,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.get("/")
-def root():
-    return {"message": "MedLens API Running 🚀"}
-
+def home():
+    return {"message": "MedLens AI API Running 🚀"}
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     return {
-        "filename": file.filename,
-        "prediction": "Pneumonia",
-        "confidence": 0.91,
-        "explanation": "Mock prediction for testing frontend-backend communication."
-    }
+    "filename": file.filename,
+    "prediction": "Pneumonia",
+    "confidence": 0.91,
+    "severity": "Moderate",
+    "processing_time": "0.84 sec",
+    "explanation": "This is a mock prediction used to verify frontend-backend communication.",
+    "heatmap_available": False
+}

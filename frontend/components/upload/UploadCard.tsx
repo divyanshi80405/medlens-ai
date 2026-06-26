@@ -2,17 +2,34 @@
 
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Image from "next/image";
+
+import { analyzeImage } from "@/lib/api";
+
+import ImagePreview from "../preview/ImagePreview";
+import ResultCard from "../results/ResultCard";
 
 export default function UploadCard() {
   const [preview, setPreview] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<any>(null);
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
 
     if (!file) return;
 
     setPreview(URL.createObjectURL(file));
+    setLoading(true);
+
+    try {
+      const response = await analyzeImage(file);
+      setResult(response);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to analyze image.");
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -24,49 +41,48 @@ export default function UploadCard() {
   });
 
   return (
-    <div className="mt-12 flex flex-col items-center">
+    <div className="mt-14 w-full">
+
+      {/* Upload Box */}
 
       <div
         {...getRootProps()}
-        className={`w-full max-w-xl rounded-3xl border-2 border-dashed p-10 cursor-pointer transition
+        className={`cursor-pointer rounded-3xl border-2 border-dashed p-10 transition
         ${
           isDragActive
             ? "border-cyan-400 bg-cyan-400/10"
-            : "border-slate-700 bg-slate-900/60"
+            : "border-slate-700 bg-slate-900/50 hover:border-cyan-500"
         }`}
       >
         <input {...getInputProps()} />
 
         <div className="text-center">
 
-          <p className="text-xl font-semibold">
-            Drag & Drop a Medical Image
-          </p>
+          <h3 className="text-2xl font-semibold">
+            Upload Chest X-ray
+          </h3>
 
-          <p className="mt-2 text-slate-400">
-            or click to browse
-          </p>
-
-          <p className="mt-4 text-sm text-slate-500">
-            JPG • JPEG • PNG
+          <p className="mt-3 text-slate-400">
+            Drag & Drop or Click to Browse
           </p>
 
         </div>
+
       </div>
 
-      {preview && (
-        <div className="mt-8">
+      {/* Result Layout */}
 
-          <Image
-            src={preview}
-            alt="Preview"
-            width={350}
-            height={350}
-            className="rounded-xl border border-slate-700"
-          />
+      <div className="mt-12 grid gap-8 lg:grid-cols-2">
 
-        </div>
-      )}
+        <ImagePreview preview={preview} />
+
+        <ResultCard
+          result={result}
+          loading={loading}
+        />
+
+      </div>
+
     </div>
   );
 }

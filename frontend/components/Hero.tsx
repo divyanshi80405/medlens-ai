@@ -5,8 +5,8 @@ import UploadCard from "@/components/upload/UploadCard";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen items-center justify-center px-6">
-      <div className="max-w-4xl text-center">
+    <section className="min-h-screen px-6 py-16">
+      <div className="mx-auto max-w-7xl">
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -31,10 +31,8 @@ export default function Hero() {
         >
           Upload a medical image and explore how AI reaches its predictions.
         </motion.p>
-
-        <UploadCard />
-
       </div>
+    <UploadCard />
     </section>
   );
 }
