@@ -5,9 +5,10 @@ out/
 
 # ---------- Python ----------
 venv/
+api/venv/
 __pycache__/
 *.py[cod]
-*.pyo
+uploads/
 
 # ---------- Environment ----------
 .env
@@ -20,3 +21,6 @@ __pycache__/
 # ---------- OS ----------
 .DS_Store
 Thumbs.db
+
+sample-images/
+uploads/
