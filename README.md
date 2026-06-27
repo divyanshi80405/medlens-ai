@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MedLens AI
 
-## Getting Started
+MedLens AI is an AI-powered medical image analysis platform designed to assist in chest X-ray interpretation through deep learning. The application provides a modern web interface where users can upload medical images and receive predictions with confidence scores in real time.
 
-First, run the development server:
+The project combines a Next.js frontend with a FastAPI backend and is deployed using Vercel and Hugging Face Spaces.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Live Demo
+
+**Application:** https://medlens-j0bev7pc0-divi2.vercel.app
+
+**Backend API:** https://divyanshi80405-medlens-ai-api.hf.space
+
+---
+
+## Features
+
+* Upload chest X-ray images for analysis
+* AI-powered disease prediction
+* Confidence score generation
+* FastAPI inference backend
+* Responsive and modern user interface
+* Fully deployed frontend and backend
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+
+### Backend
+
+* FastAPI
+* Python
+* PyTorch
+* TorchVision
+
+### Deployment
+
+* Vercel
+* Hugging Face Spaces
+
+---
+
+## Project Structure
+
+```text
+medlens-ai/
+│
+├── frontend/
+│   ├── app/
+│   ├── components/
+│   ├── lib/
+│   ├── public/
+│   └── package.json
+│
+├── api/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── ...
+│
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running the Project Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Clone the repository
 
-## Learn More
+```bash
+git clone https://github.com/divyanshi80405/medlens-ai.git
+cd medlens-ai
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Backend
 
-## Deploy on Vercel
+```bash
+cd api
+pip install -r requirements.txt
+uvicorn app:app --reload
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The frontend runs on:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+http://localhost:3000
+```
+
+The backend runs on:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## Screenshots
+
+Include screenshots demonstrating:
+
+* Landing page
+* Image upload interface
+* Prediction results
+* Model output and confidence scores
+
+---
+
+## Future Improvements
+
+* Multi-class disease classification
+* Explainability using Grad-CAM
+* Downloadable medical reports
+* User authentication
+* Prediction history
+* Performance optimization for large-scale deployment
+
+---
+
+## Author
+
+**Divyanshi Negi**
+
+GitHub: https://github.com/divyanshi80405
+
+LinkedIn: https://www.linkedin.com/in/divyanshi-negi/
+
+---
+
+## Disclaimer
+
+This project is intended for educational and research purposes only. It is not designed to replace professional medical diagnosis or clinical decision-making.
