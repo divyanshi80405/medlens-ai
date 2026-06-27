@@ -4,7 +4,10 @@ import shutil
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 
-from models.xray_model import predictor
+from models.xray_model import get_predictor
+
+predictor = get_predictor()
+result = predictor.predict(image_path)
 
 app = FastAPI(title="MedLens AI API")
 
@@ -38,10 +41,13 @@ async def predict(file: UploadFile = File(...)):
 
         result["filename"] = file.filename
         result["explanation"] = (
-            f"The AI model identified the strongest evidence for "
-            f"{result['prediction']} with a confidence of "
-            f"{result['confidence']}%."
-        )
+    f"The model detected patterns most consistent with "
+    f"{result['prediction']} "
+    f"({result['confidence']}% confidence). "
+    "This is an AI-assisted analysis and should not be "
+    "considered a medical diagnosis. Clinical evaluation "
+    "by a qualified healthcare professional is recommended."
+)
 
         return result
 

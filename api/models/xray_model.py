@@ -63,4 +63,13 @@ class XRayPredictor:
         }
 
 
-predictor = XRayPredictor()
+_predictor = None
+
+
+def get_predictor():
+    global _predictor
+
+    if _predictor is None:
+        _predictor = XRayPredictor()
+
+    return _predictor

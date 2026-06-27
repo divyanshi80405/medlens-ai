@@ -33,14 +33,6 @@ export default function Footer() {
               LinkedIn
             </a>
 
-            <a
-              href="YOUR_PORTFOLIO_URL"
-              target="_blank"
-              className="rounded-xl border border-slate-700 px-5 py-3 transition hover:border-cyan-400 hover:text-cyan-300"
-            >
-              Portfolio
-            </a>
-
           </div>
 
           <div className="mt-12 h-px w-full bg-slate-800" />
