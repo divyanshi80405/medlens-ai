@@ -111,12 +111,11 @@ http://127.0.0.1:8000
 
 ## Screenshots
 
-Include screenshots demonstrating:
-
 * Landing page
-* Image upload interface
+  <img width="1572" height="852" alt="image" src="https://github.com/user-attachments/assets/0694abff-8d98-4897-a431-eec4a83f4005" />
+
 * Prediction results
-* Model output and confidence scores
+  <img width="1507" height="900" alt="image" src="https://github.com/user-attachments/assets/6e0d1fde-40c9-47d0-804c-10764ca15f70" />
 
 ---
 
